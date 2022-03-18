@@ -6,8 +6,6 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 
-setwd("C:/MDS/Block 5/DSCI532/labs/group/mental_health_in_tech_dashboard_r")
-
 app <- Dash$new(
   external_stylesheets = dbcThemes$BOOTSTRAP
   )
