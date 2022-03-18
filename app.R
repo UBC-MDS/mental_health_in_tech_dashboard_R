@@ -15,7 +15,6 @@ gitlogo = "https://cdn-icons-png.flaticon.com/512/25/25231.png"
 data <- read.csv('data/processed/survey.csv')
 
 
-chart_tpye = c("Bar","Pie")
 genderlist = c("Male","Female","Other")
 sizelist = c("1-5","6-25","26-100","100-500","500-1000","More than 1000")
 agelist = c("18-24","25-34","35-44","45-54","55+")
@@ -241,7 +240,7 @@ tab2 <- htmlDiv(
                         htmlBr(),
                         dccRadioItems(
                           id='chart-widget',
-                          options = c("Pie", "Bar"),
+                          options = c("Pie","Bar") %>% purrr::map(function(col) list(label = col, value = col)),
                           value="Pie",
                           labelStyle=list(display="block")
                         ),
@@ -471,9 +470,18 @@ answerDict$Q21<-c("Yes","No")
 
 app$callback(
   output("map_display-question", 'children'),
-  list(input('map_q-widget', "value")),
-  function(question){
-    htmlH3(qdict[question] %>% pull())
+  list(input('map_q-widget', "value"),
+       input('answer-widget', "value")),
+  function(question,response){
+    if (class(response)=="list"){
+      response_tmp <- "Select a Response"
+    } else {
+      response_tmp <- response
+    }
+    print(class(response_tmp))
+    print(is.null(response))
+    print(response_tmp)
+    htmlH3(paste0(qdict[question] %>% pull()," (",response_tmp,")"))
   }
 )
 
