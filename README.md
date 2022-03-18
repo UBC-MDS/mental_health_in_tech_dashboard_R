@@ -6,7 +6,7 @@ Link to Application
 ------------
 Here is the link to our Horaku deployment:
 
-[Web App](https://github.com/UBC-MDS/mental_health_in_tech_dashboard)
+[Web App](https://dsci-532-mental-health-r.herokuapp.com/)
 
 Demo
 ----
