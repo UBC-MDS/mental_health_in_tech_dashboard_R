@@ -10,7 +10,7 @@ Here is the link to the app (Hosted on Heroku):
 
 Demo
 ----
-![Dashboard-DEMO](https://github.com/UBC-MDS/mental_health_in_tech_dashboard/blob/main/sketch/Demo.gif)
+![Dashboard-DEMO](https://github.com/UBC-MDS/mental_health_in_tech_dashboard_r/blob/main/sketch/Demo.gif)
 
 Motivation
 ---------
