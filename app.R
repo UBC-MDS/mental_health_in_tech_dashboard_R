@@ -12,6 +12,7 @@ app <- Dash$new(
 
 logo <- "https://cdn-icons-png.flaticon.com/512/2017/2017231.png"
 gitlogo = "https://cdn-icons-png.flaticon.com/512/25/25231.png"
+herokulogo = "https://brand.heroku.com/static/media/heroku-logo-stroke.aa0b53be.svg"
 data <- read.csv('data/processed/survey.csv')
 
 
@@ -131,6 +132,7 @@ tab1 <- htmlDiv(
                           list(
                             "In this dashboard we want explore the attitude towards mental health in tech companies. We assume that the gender, age, company size, whether the company provides mental health benefits are likely to be correlated with our research question. We also explore the geographical distribution of respondents.", 
                             htmlBr(), 
+                            htmlBr(), 
                             "The first summary tab presents an overall distribution of respondents. The interactive tab allows you to choose a specific question to explore. The map tab shows the response to a specific question by states."
                             )
                         ),
@@ -233,9 +235,10 @@ tab2 <- htmlDiv(
                     htmlBr(),
                     htmlP(
                       list(
+                        htmlP("Use this tab to explore how the state of mental health in tech varies by age, gender, and company size. For employers, this may help you to further understand employee turnover, especially among different age and gender groups."),
                         htmlH2("Instruction"),
                         htmlBr(),
-                        htmlP("Please select the research question and respondents you would like to explore. By default, the plot includes all respondents in the data set."),
+                        htmlP("Please select the research question and filter on different respondent's demographic you would like to compare their responses. By default, the plot includes all respondents in the data set."),
                         htmlH4("Plot type"),
                         htmlBr(),
                         dccRadioItems(
@@ -324,6 +327,9 @@ tab3 <- htmlDiv(
                     htmlBr(),
                     htmlP(
                       list(
+                        htmlP("The map will show you the percentage of your chosen response by state. For both tech employees and employers, our hope for this tab is that it lets you explore how attitudes towards mental health vary by state. For recent tech graduates, you can use this tool to help make a decision on where to work and live."),
+                        htmlBr(),
+                        htmlP("Note the original survey is conducted internationally, for presentation purposes, here is only showing the responses from the US."),
                         htmlH2("Instruction"),
                         htmlBr(),
                         htmlP("Please select the research question and response you would like to explore. The map will show you the percentage of your chosen response by states."),
@@ -375,12 +381,25 @@ navbar <- dbcNavbar(
           list(
             dbcCol(img(src = logo, height = "30px")),
             dbcCol(dbcNavbarBrand("Mental Health in Tech Dashboard", className = "ms-2")),
-            dbcCol(htmlImg(src=gitlogo,height="30px"))
+            dbcCol(style=list('margin-right'='700px')),
+            dbcCol(
+              htmlA(
+                dbcCol(htmlImg(src = gitlogo, height = "30px")),
+                href="https://github.com/UBC-MDS/mental_health_in_tech_dashboard_r"
+              )
+            ),
+            dbcCol(style=list('margin-right'='5px', 'margin-left'='5px')),
+            dbcCol(
+              htmlA(
+                dbcCol(htmlImg(src = herokulogo, height = "30px")), 
+                href="https://dsci-532-mental-health-python.herokuapp.com/"
+              )
+            )
           ),
           align = "left",
           className = "g-0"
         ),
-        href = "https://github.com/UBC-MDS/mental_health_in_tech_dashboard_r",
+        href = "https://dsci-532-mental-health-python.herokuapp.com/",
         style = list("textDecoration" = "none")
       )
     )
